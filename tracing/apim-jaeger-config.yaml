@@ -1,0 +1,32 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIManager
+metadata:
+  annotations:
+    apps.3scale.net/apimanager-threescale-version: '2.11'
+    apps.3scale.net/threescale-operator-version: 0.8.1
+  name: <api manager instance name>
+  namespace: <api manager namespace>
+spec:
+  monitoring:
+    enablePrometheusRules: true
+    enabled: true
+  apicast:
+    managementAPI: status
+    openSSLVerify: false
+    productionSpec:
+      openTracing:
+        enabled: true
+        tracingConfigSecretRef:
+          name: jaeger-config-production
+        tracingLibrary: jaeger
+      replicas: 1
+    registryURL: 'http://apicast-staging:8090/policies'
+    responseCodes: true
+    stagingSpec:
+      openTracing:
+        enabled: true
+        tracingConfigSecretRef:
+          name: jaeger-config-staging
+        tracingLibrary: jaeger
+      replicas: 1
+  wildcardDomain: <api manager domain name>
