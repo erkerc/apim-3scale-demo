@@ -1,0 +1,31 @@
+# Check cluster-monitoring-config ConfigMap in openshift-monitoring namespace.
+oc get cm cluster-monitoring-config -o yaml -n openshift-monitoring
+
+# Enable user-workload-monitoring
+oc apply -f cluster-monitoring-config.yaml -n openshift-monitoring
+
+# Check pods in openshift-user-workload-monitoring namespace
+oc get pod -n openshift-user-workload-monitoring
+
+# Deploy Grafana Operator from OperatorHub
+
+# Create Grafana Instance
+oc apply -f grafana.yaml 
+
+# Get Thanos Querier Route 
+export THANOS_QUERIER_ROUTE=$(oc get route thanos-querier -n openshift-monitoring|awk '{if (NR!=1) {print $2}}')
+
+# Add cluster-monitoring-view role to grafana-serviceaccount service account.
+oc adm policy add-cluster-role-to-user cluster-monitoring-view -z grafana-serviceaccount
+
+# Get Service Account Token
+export ACCESS_TOKEN=$(oc serviceaccounts get-token grafana-serviceaccount)
+
+# Replace ACCESS_TOKEN and THANOS_QUERIER_ROUTE in Grafana Datasource
+
+# Add monitoring parameter to APIManager.
+
+# Enable extended metrics
+oc set env dc/apicast-staging APICAST_EXTENDED_METRICS=true
+oc set env dc/apicast-production APICAST_EXTENDED_METRICS=true
+

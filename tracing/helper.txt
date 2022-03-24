@@ -1,0 +1,4 @@
+# Create Secret for Apicast Staging
+oc create secret generic jaeger-config-staging --from-file=config=staging_jaeger_config.json
+# Create Secret for Apicast Staging
+oc create secret generic jaeger-config-production --from-file=config=production_jaeger_config.json

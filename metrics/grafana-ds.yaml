@@ -1,0 +1,20 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDataSource
+metadata:
+  name: prometheus-grafanadatasource
+  namespace:  <your 3scale project>
+spec:
+  datasources:
+  - access: proxy
+    editable: true
+    isDefault: true
+    jsonData:
+      httpHeaderName1: 'Authorization'
+      timeInterval: 5s
+      tlsSkipVerify: true
+    name: Prometheus
+    secureJsonData:
+      httpHeaderValue1: 'Bearer <ACCESS_TOKEN>'
+    type: prometheus
+    url: https://$THANOS_QUERIER_ROUTE
+  name: prometheus-grafanadatasource.yaml
