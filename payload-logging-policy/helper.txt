@@ -1,0 +1,8 @@
+ 
+# Create Secret containing custom policy source code and configuration
+oc create secret generic payload-logging-policy-config --from-file=init.lua --from-file=payload-logging-policy.lua  --from-file=apicast-policy.json
+
+# Add custom policy config to APIManager CR, check apimanager-policy-config.yaml
+
+# Register policy 
+oc apply -f policy-definition.yaml 

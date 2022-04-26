@@ -1,0 +1,11 @@
+{
+    "$schema": "http://apicast.io/policy-v1/schema#manifest#",
+    "name": "payload-logging-policy",
+    "summary": "Request & response payload logging.",
+    "description": "Request & response payload logging.",
+    "version": "0.1",
+    "configuration": {
+      "type": "object",
+      "properties": { }
+    }
+  }

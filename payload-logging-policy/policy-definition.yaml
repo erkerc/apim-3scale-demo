@@ -1,0 +1,15 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: CustomPolicyDefinition
+metadata:
+  name: payload-logging-policy
+spec:
+  name: "payload-logging-policy"
+  version: "0.1"
+  schema:
+    name: "PayloadLoggingPolicy"
+    version: "0.1"
+    summary: "Request & response payload loggin"
+    $schema: "http://apicast.io/policy-v1/schema#manifest"
+    configuration:
+      type: "object"
+      properties: {}

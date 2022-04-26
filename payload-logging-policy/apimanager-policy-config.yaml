@@ -1,0 +1,15 @@
+   apicast:
+
+    productionSpec:
+      customPolicies:
+        - name: payload-logging-policy
+          secretRef:
+            name: payload-logging-policy-config
+          version: '1.0'
+
+    stagingSpec:   
+      customPolicies:
+        - name: payload-logging-policy
+          secretRef:
+            name: payload-logging-policy-config
+          version: '1.0'
