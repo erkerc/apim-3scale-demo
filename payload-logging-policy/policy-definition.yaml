@@ -6,9 +6,9 @@ spec:
   name: "payload-logging-policy"
   version: "0.1"
   schema:
-    name: "PayloadLoggingPolicy"
+    name: "payload-logging-policy"
     version: "0.1"
-    summary: "Request & response payload loggin"
+    summary: "Request & response payload logging"
     $schema: "http://apicast.io/policy-v1/schema#manifest"
     configuration:
       type: "object"
